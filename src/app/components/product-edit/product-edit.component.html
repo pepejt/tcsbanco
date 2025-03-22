@@ -1,0 +1,71 @@
+<div class="container">
+  <form (ngSubmit)="onSave()" [formGroup]="frmProducto">
+    <h1 class="title">Formulario de Registro</h1>
+
+    <div class="formulario">
+      <div>
+        <label for="id">ID</label>
+        <input type="text" formControlName="id" />
+        @if(frmProducto.get('id')?.hasError('required') && frmProducto.get('id')?.touched){
+        <div class="input-error">ID no v&aacute;lido!</div>
+        }
+        @if(frmProducto.get('id')?.hasError('minlength') && frmProducto.get('id')?.touched){
+        <div class="input-error">Ingrese entre 3 y 10 caracteres!</div>
+        }
+      </div>
+      <div>
+        <label for="name">Nombre</label>
+        <input type="text" formControlName="name" />
+        @if(frmProducto.get('name')?.hasError('required') && frmProducto.get('name')?.touched){
+        <div class="input-error">El campo es requerido!</div>
+        }
+        @if(frmProducto.get('name')?.hasError('minlength') && frmProducto.get('name')?.touched){
+        <div class="input-error">Ingrese entre 5 y 100 caracteres!</div>
+        }
+      </div>
+      <div>
+        <label for="description">Descripci&oacute;n</label>
+        <input type="text" formControlName="description" />
+        @if(frmProducto.get('description')?.hasError('required') && frmProducto.get('description')?.touched){
+        <div class="input-error">El campo es requerido!</div>
+        }
+        @if(frmProducto.get('description')?.hasError('minlength') && frmProducto.get('description')?.touched){
+        <div class="input-error">Ingrese entre 10 y 200 caracteres!</div>
+        }
+      </div>
+      <div>
+        <label for="logo">Logo</label>
+        <input type="text" formControlName="logo" />
+        @if(frmProducto.get('logo')?.hasError('required') && frmProducto.get('logo')?.touched){
+        <div class="input-error">El campo es requerido!</div>
+        }
+      </div>
+      <div>
+        <label for="date_release">Fecha Liberaci&oacute;n</label>
+        <input type="date" formControlName="date_release" (change)="onChangeDateRelease($event)" />
+        @if(frmProducto.get('date_release')?.hasError('invalidMinDate')){
+        <div class="input-error">Ingrese una fecha mayor o igual a hoy</div>
+        }
+      </div>
+      <div>
+        <label for="date_revision">Fecha Revisi&oacute;n</label>
+        <input type="date" formControlName="date_revision" readonly />
+        @if(frmProducto.get('date_revision')?.hasError('required') && frmProducto.get('date_revision')?.touched){
+        <div class="input-error">El campo es requerido!</div>
+        }
+      </div>
+    </div>
+    <br>
+    @if(error){
+      <div class="msg-error">
+        Tenemos un problema<br>
+        <span class="msg-detail">Detalle: {{error}}</span>
+      </div>
+      }
+    <div class="action-bar">
+      <button type="button" class="action-button" (click)="onReset()">Reiniciar</button>
+      <button type="submit" class="action-button" [disabled]="!frmProducto.valid">Enviar</button>
+    </div>
+
+  </form>
+</div>

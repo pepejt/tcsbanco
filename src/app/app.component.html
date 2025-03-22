@@ -1,35 +1,6 @@
-<div>
-  <input type="text" placeholder="Search..." (keyup)="filterProducts($event)"/>
-  <table>
-      <tr>
-        <th>Logo</th>
-        <th>Nombre del producto</th>
-        <th>Descripci&oacute;n <img src="assets/info.png"></th>
-        <th>Fecha de liberaci&oacute;n <img src="assets/info.png"></th>
-        <th>Fecha de reestructuraci&oacute;n<img src="assets/info.png"></th>
-        <th>&nbsp;</th>
-      </tr>
-      @for (product of products | slice:0: pageSize; track product.id){
-      <tr >
-        <td>{{ product.logo }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.date_release | dateformat }}</td>
-        <td>{{ product.date_revision  | dateformat}}</td>
-        <td>
-          <button><img src="assets/more_vert.png" width="18px" height="18px"></button>
-        </td>
-      </tr>
-      }
-      <tr>
-        <td colspan="6" style="text-align: left;">
-          <span class="results">{{products.length}} Resultados</span>
-          <select (change)="pageSizeChange($event)" class="page-size" >
-            <option value="5" selected>5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select></td>
-      </tr>
-  </table>
+<h3 class="title">BANCO</h3>
+
+<div class="content">
+  <router-outlet />
 </div>
 

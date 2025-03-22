@@ -23,13 +23,19 @@ export class ProductService {
     )
   }
 
-  create(product: ProductInterface) {
-    return this.httpClient.post(this.url, product);
+  save(product: any, id?: string): Observable<ProductInterface> {
+    if (product.id){
+      return this.httpClient.post<ProductInterface>(this.url, product);
+    }else{
+      return this.httpClient.put<ProductInterface>(`${this.url}/${id}`, product);
+    }
   }
-  update(id: string, product: ProductInterface) {
-    return this.httpClient.put(`${this.url}/${id}`, product);
+
+  delete(id: string): Observable<ResponseInterface> {
+    return this.httpClient.delete<ResponseInterface>(`${this.url}/${id}`);
   }
-  delete(id: string) {
-    return this.httpClient.delete(`${this.url}/${id}`);
+
+  exist(id?: string):Observable<boolean>{
+    return this.httpClient.get<boolean>(`${this.url}/verification/${id}`);
   }
 }

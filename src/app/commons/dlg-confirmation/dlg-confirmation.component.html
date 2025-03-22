@@ -1,0 +1,11 @@
+<div class="dlg-container">
+  <div #modal class="dialog">
+    <div class="description">
+      <h5>¿Estas seguro de eliminar el producto {{name}}?</h5>
+    </div>
+    <div class="action-bar">
+      <button type="button" class="action-button" (click)="onCancel()">Cancelar</button>
+      <button type="submit" class="action-button" (click)="onYes()">Confirmar</button>
+    </div>
+  </div>
+</div>

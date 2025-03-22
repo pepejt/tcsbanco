@@ -1,0 +1,24 @@
+.dialog{
+  background-color: white;
+  border-radius: 4px;
+  border-radius: 18px;
+  max-width: 400px;
+  margin: auto;
+  text-align: start;
+  position: relative;
+  top: 92px;
+}
+
+.description{
+  padding: 24px;
+  border-bottom: 1px solid #b6b3b3;
+}
+
+.dlg-container {
+  position:  fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #b6b3b3c9;
+  z-index: 100;
+}
